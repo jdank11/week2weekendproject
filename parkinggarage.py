@@ -22,6 +22,14 @@ class Parking():
                 print('please pay to exit')
                 self.payTicket()
                 
+    def leaveGarage(self):
+        ticket = int(input('enter your ticket number? '))
+        if self.currentTicket[ticket] == 'paid':
+            print(f'your ticket {ticket} is paid, have a good day')
+        else:
+            print(f'your ticket is unpaid, please pay your ticket number {ticket}')
+            self.payTicket()
+            
     def park(self):
         while True:
             select = input("would you like to park/pay/exit or quit ? ").lower()
@@ -30,19 +38,13 @@ class Parking():
             elif select == 'pay':
                 self.payTicket()
             elif select == 'exit':
-                self.leaveGarage("fromExit")
+                self.leaveGarage()
             elif select == 'quit':
                 break
             else:
                 print("would you like to park/pay/exit or quit ? ").lower()
 
-    def leaveGarage(self):
-        ticket = int(input('enter your ticket number? '))
-        if self.currentTicket[ticket] == 'paid':
-            print(f'your ticket {ticket} is paid, have a good day')
-        else:
-            print(f'your ticket is unpaid, please pay your ticket number {ticket}')
-            self.payTicket()
+    
             
 
 car1 = Parking()
