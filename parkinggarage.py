@@ -5,7 +5,17 @@ class Parking():
         self.parkingSpaces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         self.currentTicket = {}
 
-                        
+    def getTicket(self):
+        if self.parkingSpaces == []:
+            print('the garage is full')
+        else:
+            ticket = self.tickets.pop(0)
+            self.parkingSpaces.pop(0)
+            self.currentTicket[ticket]="unpaid"
+            print(f'your ticket number is {self.currentTicket}')
+            print(f'spaces left: {self.parkingSpaces}')
+            print(f'tickets left: {self.tickets}')
+            
     def payTicket(self):
         ticket = int(input('what is your ticket number? '))
         if self.currentTicket[ticket] == 'paid':
